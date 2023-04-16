@@ -1,6 +1,6 @@
-def call(String AWSAccountId, String ECRRepoName, String ECRRegion){
+def call(String AWSAccountId, String ECRRepoName, String Region){
     sh """
-        aws ecr get-login-password --region ${ECRRegion} | docker login --username AWS --password-stdin ${AWSAccountId}.dkr.ecr.${ECRRegion}.amazonaws.com
-        docker push ${AWSAccountId}.dkr.ecr.${ECRRegion}.amazonaws.com/${ECRRepoName}:latest
+        aws ecr get-login-password --region ${Region} | docker login --username AWS --password-stdin ${AWSAccountId}.dkr.ecr.${Region}.amazonaws.com
+        docker push ${AWSAccountId}.dkr.ecr.${Region}.amazonaws.com/${ECRRepoName}:latest
     """
 }
